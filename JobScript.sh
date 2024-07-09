@@ -5,3 +5,4 @@
 #SBATCH -e report/%J_err_simpleJob.txt
 
 bin/main_orig
+bin/main_swapLoop
