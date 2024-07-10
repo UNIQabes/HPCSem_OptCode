@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "second.c"
 
-#define N 2000
+#define N 1000
 int main(void)
 {
 	static double a[N][N], b[N][N], c[N][N];

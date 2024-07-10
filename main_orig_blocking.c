@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "second.c"
 
-#define N 2000
+#define N 1000
 #define BLOCKSIZE 8
 int main(void)
 {
