@@ -2,7 +2,10 @@
 #include "second.c"
 
 #define N 1000
-#define BLOCKSIZE 8
+#define BLOCKSIZE_I 8
+#define BLOCKSIZE_K 8
+#define BLOCKSIZE_J 8
+
 int main(void)
 {
 	static double a[N][N], b[N][N], c[N][N];
@@ -15,17 +18,18 @@ int main(void)
 	}
 
 	double start=second();
-	for (ib = 0; ib < N; ib+=BLOCKSIZE) 
+	for (ib = 0; ib < N; ib+=BLOCKSIZE_I) 
 	{
-		for (kb = 0; kb < N; kb+=BLOCKSIZE) 
+		//c[i],b[i]のサイズは8K 
+		for (kb = 0; kb < N; kb+=BLOCKSIZE_K) 
 		{
-			for (jb = 0; jb < N; jb+=BLOCKSIZE) 
+			for (jb = 0; jb < N; jb+=BLOCKSIZE_J) 
 			{
-				for (i = ib; i < ib+BLOCKSIZE; i++) 
+				for (i = ib; i < ib+BLOCKSIZE_I; i++) 
 				{
-					for (k = kb; k < kb+BLOCKSIZE; k++) 
+					for (k = kb; k < kb+BLOCKSIZE_K; k++) 
 					{
-						for (j = jb; j < jb+BLOCKSIZE; j++) 
+						for (j = jb; j < jb+BLOCKSIZE_J; j++) 
 						{
 							c[i][j] += a[i][k] * b[k][j];
 						}
@@ -37,7 +41,7 @@ int main(void)
 		}
 	}
 	double end=second();
-	printf("time:%lf\n",end-start);
+	printf("%lf",end-start);
 
 	return 0;
 }

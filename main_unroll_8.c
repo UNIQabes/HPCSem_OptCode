@@ -15,14 +15,19 @@ int main(void)
 	double start=second();
 	for (i = 0; i < N; i++) 
 	{
-		//KeepCaching:c[i] a[i]
 		for (k = 0; k < N; k++) 
 		{
-			//use:c[i] a[i]
-			//locality:b[k]
-			for (j = 0; j < N; j++) 
+			for (j = 0; j < N; j+=8) 
 			{
 				c[i][j] += a[i][k] * b[k][j];
+				c[i][j+1] += a[i][k] * b[k][j+1];
+				c[i][j+2] += a[i][k] * b[k][j+2];
+				c[i][j+3] += a[i][k] * b[k][j+3];
+
+				c[i][j+4] += a[i][k] * b[k][j+4];
+				c[i][j+5] += a[i][k] * b[k][j+5];
+				c[i][j+6] += a[i][k] * b[k][j+6];
+				c[i][j+7] += a[i][k] * b[k][j+7];
 			}
 		}
 	}

@@ -24,7 +24,7 @@ int main(void)
 		}
 	}
 	double end=second();
-	printf("time:%lf\n",end-start);
+	printf("%lf",end-start);
 
 	return 0;
 }
